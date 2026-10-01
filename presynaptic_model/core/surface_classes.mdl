@@ -1,0 +1,10 @@
+DEFINE_SURFACE_CLASSES {
+  transp {
+    TRANSPARENT = ALL_MOLECULES
+  }
+  axon_segment_end {
+      REFLECTIVE = ALL_MOLECULES
+  }
+  er_segment_end {
+  }
+}

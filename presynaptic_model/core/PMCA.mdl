@@ -1,0 +1,37 @@
+	k_PMCA_0_1 = 1.5e8
+	k_PMCA_1_0 = 20
+	k_PMCA_1_2 = 100
+	k_PMCA_2_0 = 1e5
+
+    presynaptic_area = 0.5*4*4
+	cai = ca_conc_base_presynaptic
+	Km = (k_PMCA_1_0+k_PMCA_1_2)/k_PMCA_0_1
+	E0 = 1e15*(PMCA_density_presynaptic*presynaptic_area/presynaptic_vol)/6.02205e23
+	ES = (E0*cai)/(Km+cai)
+	E = E0-ES
+	Vmax = k_PMCA_1_2*E0
+	V = (Vmax*cai)/(Km+cai)
+	pmca_pump_rate = V/E
+
+    k_PMCA_0_leak = pmca_pump_rate
+
+    k_PM_leak = 3.5
+
+DEFINE_MOLECULES {
+
+ PMCA_0 {DIFFUSION_CONSTANT_2D = 0}
+ PMCA_1 {DIFFUSION_CONSTANT_2D = 0}
+ PMCA_2 {DIFFUSION_CONSTANT_2D = 0}
+ 
+}
+
+DEFINE_REACTIONS {
+
+/* PMCA pump with built-in leak */
+   Ca, + PMCA_0' -> PMCA_1' [k_PMCA_0_1] : PMCA_Ca_flux_out
+   PMCA_1' -> Ca, + PMCA_0' [k_PMCA_1_0] : PMCA_Ca_flux_in
+   PMCA_1' -> PMCA_2' [k_PMCA_1_2]
+   PMCA_2' -> PMCA_0' [k_PMCA_2_0]
+   PMCA_0' -> PMCA_0' + Ca, [k_PMCA_0_leak] : PMCA_Ca_leak_flux
+   
+}

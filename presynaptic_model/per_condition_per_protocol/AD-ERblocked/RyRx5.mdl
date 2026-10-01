@@ -1,0 +1,128 @@
+ryr_distance = 350
+//ryr_number_presynaptic = 750
+
+/* Rates for RyR2 channel, Saftenku et al., BioPhysJ 2001 */
+	/* L mode rates: */
+	k_RyRC1C2_L = 1.24e6
+	k_RyRC2C1_L = 13.6
+	k_RyRC2C3_L = 29.8e6
+	k_RyRC3C2_L = 3867
+	k_RyRC2C5_L = 1.81
+	k_RyRC5C2_L = 3.63
+	k_RyRC3O1_L = 731.2
+	k_RyRO1C3_L = 4185
+	k_RyRC3O2_L = 24.5
+	k_RyRO2C3_L = 156.5
+	k_RyRC3O3_L = 8.5
+	k_RyRO3C3_L = 111.7
+	k_RyRO2C4_L = 1995
+	k_RyRC4O2_L = 415.3
+	k_RyRO3C4_L = 253.3
+	k_RyRC4O3_L = 43.3
+
+	/* H1 mode rates: */
+	k_RyRC1C2_H1 = 3.26e6
+	k_RyRC2C1_H1 = 116
+	k_RyRC2C3_H1 = 0.66e6
+	k_RyRC3C2_H1 = 163
+	k_RyRC2O1_H1 = 7.86e6
+	k_RyRO1C2_H1 = 1480
+	k_RyRC3O2_H1 = 7.77e6
+	k_RyRO2C3_H1 = 330
+	k_RyRC4O2_H1 = 2390
+	k_RyRO2C4_H1 = 298
+
+	/* L <-> H1 transition rates: */
+	k_RyRC1C2_LH1 = 2e3/3
+	k_RyRC2C1_H1L = 0.25/3
+	k_RyRC2C3_LH1 = 2e3/3
+	k_RyRC3C2_H1L = 0.25/3
+	k_RyRC3C4_LH1 = 2e3/3
+	k_RyRC4C3_H1L = 0.25/3
+
+	/* rates for Ca flux through open RyR */
+	/* Conductance of RyR is 188 pS.  Vrev = -2.4mV.  Ver = 0mV. */
+	/* Assuming 0.35pA at 1mM Ca++, flux rate at 60uM would be 65530.5 ions/sec */
+	/* Rate of bimolecular reaction is 65530.5/60uM = 1.09e9 M^-1s^-1 */
+	/* Flux is bidirectional so bimolecular reaction will be bidirectional */
+	/*   Guo et al. Circulation Research 2012 */
+	
+	
+	k_RyR_Ca_flux = 1.09e9
+	
+DEFINE_MOLECULES {
+
+ RyRC1_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRC2_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRC3_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRC4_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRC5_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRO1_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRO2_L {DIFFUSION_CONSTANT_2D = 0}
+ RyRO3_L {DIFFUSION_CONSTANT_2D = 0}
+
+ RyRC1_H1 {DIFFUSION_CONSTANT_2D = 0}
+ RyRC2_H1 {DIFFUSION_CONSTANT_2D = 0}
+ RyRC3_H1 {DIFFUSION_CONSTANT_2D = 0}
+ RyRC4_H1 {DIFFUSION_CONSTANT_2D = 0}
+ RyRO1_H1 {DIFFUSION_CONSTANT_2D = 0}
+ RyRO2_H1 {DIFFUSION_CONSTANT_2D = 0}
+ 
+}
+
+DEFINE_REACTIONS {
+
+/* RyR2 channel; Saftenku et al., BioPhysJ 2001 */
+/* L mode: */
+ Ca' + RyRC1_L' <-> RyRC2_L' [>k_RyRC1C2_L, < k_RyRC2C1_L]
+ Ca' + RyRC2_L' <-> RyRC3_L' [>k_RyRC2C3_L, < k_RyRC3C2_L]
+ RyRC2_L' <-> RyRC5_L' [>k_RyRC2C5_L, < k_RyRC5C2_L]
+ RyRC3_L' <-> RyRO1_L' [>k_RyRC3O1_L, < k_RyRO1C3_L]
+ RyRC3_L' <-> RyRO2_L' [>k_RyRC3O2_L, < k_RyRO2C3_L]
+ RyRC3_L' <-> RyRO3_L' [>k_RyRC3O3_L, < k_RyRO3C3_L]
+ RyRO2_L' <-> RyRC4_L' [>k_RyRO2C4_L, < k_RyRC4O2_L]
+ RyRO3_L' <-> RyRC4_L' [>k_RyRO3C4_L, < k_RyRC4O3_L]
+
+/* H1 mode: */
+ Ca' + RyRC1_H1' <-> RyRC2_H1' [>k_RyRC1C2_H1, < k_RyRC2C1_H1]
+ Ca' + RyRC2_H1' <-> RyRC3_H1' [>k_RyRC2C3_H1, < k_RyRC3C2_H1]
+ Ca' + RyRC2_H1' <-> RyRO1_H1' [>k_RyRC2O1_H1, < k_RyRO1C2_H1]
+ Ca' + RyRC3_H1' <-> RyRO2_H1' [>k_RyRC3O2_H1, < k_RyRO2C3_H1]
+ RyRO2_H1' <-> RyRC4_H1' [>k_RyRO2C4_H1, < k_RyRC4O2_H1]
+ 
+ /* L to H1 transitions */
+ Ca' + RyRC1_L' <-> RyRC2_H1' [>k_RyRC1C2_LH1, < k_RyRC2C1_H1L]
+ Ca' + RyRC2_L' <-> RyRC3_H1' [>k_RyRC2C3_LH1, < k_RyRC3C2_H1L]
+ Ca' + RyRC3_L' <-> RyRC4_H1' [>k_RyRC3C4_LH1, < k_RyRC4C3_H1L]
+ 
+ /* RyR Ca Flux. Note: bidirectional flux */
+ Cae, + RyRO1_L' -> Ca' + RyRO1_L' [k_RyR_Ca_flux] : ryro1_l_ca_flux_out
+ Ca' + RyRO1_L' -> Cae, + RyRO1_L' [k_RyR_Ca_flux] : ryro1_l_ca_flux_in
+
+ Cae, + RyRO2_L' -> Ca' + RyRO2_L' [k_RyR_Ca_flux] : ryro2_l_ca_flux_out
+ Ca' + RyRO2_L' -> Cae, + RyRO2_L' [k_RyR_Ca_flux] : ryro2_l_ca_flux_in
+
+ Cae, + RyRO3_L' -> Ca' + RyRO3_L' [k_RyR_Ca_flux] : ryro3_l_ca_flux_out
+ Ca' + RyRO3_L' -> Cae, + RyRO3_L' [k_RyR_Ca_flux] : ryro3_l_ca_flux_in
+
+ Cae, + RyRO1_H1' -> Ca' + RyRO1_H1' [k_RyR_Ca_flux] : ryro1_h1_ca_flux_out
+ Ca' + RyRO1_H1' -> Cae, + RyRO1_H1' [k_RyR_Ca_flux] : ryro1_h1_ca_flux_in
+
+ Cae, + RyRO2_H1' -> Ca' + RyRO2_H1' [k_RyR_Ca_flux] : ryro2_h1_ca_flux_out
+ Ca' + RyRO2_H1' -> Cae, + RyRO2_H1' [k_RyR_Ca_flux] : ryro2_h1_ca_flux_in
+ 
+}
+
+/* set up RyR cluster as single disk placed at desired location on ER: */
+sprintf(ryr_disk_file,"../../ryr_disks/ryr_disk_%g.mdl",ryr_number_presynaptic)
+INCLUDE_FILE = ryr_disk_file
+ryr_disk_scale = 0.010
+
+ryr_release_disk OBJECT {
+  ryr_disk OBJECT ryr_disk {
+     SCALE = [ryr_disk_scale,70*ryr_disk_scale,ryr_disk_scale]
+     ROTATE = [0, 1, 0], 90
+     TRANSLATE = [-0.075, ryr_distance/1000, 0]
+  }
+}
+

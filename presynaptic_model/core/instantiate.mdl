@@ -1,0 +1,313 @@
+MODIFY_SURFACE_REGIONS
+{
+    tripartite_synapse.presynaptic[clamped_end_1]
+        {
+        SURFACE_CLASS = axon_segment_end
+        }
+    tripartite_synapse.presynaptic[clamped_end_2]
+        {
+        SURFACE_CLASS = axon_segment_end
+        }
+    tripartite_synapse.presynaptic_er[clamped_end_1]
+        {
+        SURFACE_CLASS = er_segment_end
+        }
+    tripartite_synapse.presynaptic_er[clamped_end_2]
+        {
+        SURFACE_CLASS = er_segment_end
+        }
+ 
+    tripartite_synapse.presynaptic_er[ALL]
+    {
+        MOLECULE_NUMBER
+        {
+            SERCA_X1' = serca_number_presynaptic*serca_x1_feq
+            SERCA_X1A' = serca_number_presynaptic*serca_x1a_feq
+            SERCA_X2' = serca_number_presynaptic*serca_x2_feq
+            SERCA_Y1' = serca_number_presynaptic*serca_y1_feq
+            SERCA_Y1A' = serca_number_presynaptic*serca_y1a_feq
+            SERCA_Y2' = serca_number_presynaptic*serca_y2_feq
+        }
+    }
+}
+
+INSTANTIATE tripartite_synapse_model OBJECT {
+  tripartite_synapse OBJECT tripartite_synapse {}
+  synchronous_release_sites OBJECT synchronous_release_sites {}
+  asynchronous_release_sites OBJECT asynchronous_release_sites {}
+  spontaneous_release_site OBJECT spontaneous_release_site {}
+  presynaptic_active_zone OBJECT presynaptic_active_zone {}
+  
+  vdcc_release_disk OBJECT vdcc_release_disk {}
+  ryr_release_disk OBJECT ryr_release_disk {}
+  
+  
+/* presynaptic calbindin initial equilibrium conditions: */
+  presynaptic_calbindin_1 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H0M0
+   CONCENTRATION = cb_H0M0_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_2 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H0M1
+   CONCENTRATION = cb_H0M1_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_3 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H0M2
+   CONCENTRATION = cb_H0M2_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_4 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H1M0
+   CONCENTRATION = cb_H1M0_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_5 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H1M1
+   CONCENTRATION = cb_H1M1_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_6 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H1M2
+   CONCENTRATION = cb_H1M2_feq*calbindin_conc_tot
+  }
+  
+   presynaptic_calbindin_7 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H2M0
+   CONCENTRATION = cb_H2M0_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_8 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H2M1
+   CONCENTRATION = cb_H2M1_feq*calbindin_conc_tot
+  }
+  
+  presynaptic_calbindin_9 RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+   MOLECULE = cb_H2M2
+   CONCENTRATION = cb_H2M2_feq*calbindin_conc_tot
+  }
+  
+  
+  /* ER Leak */
+  presynaptic_ER_leak RELEASE_SITE {
+    SHAPE = (tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL])
+    MOLECULE = ER_leak,
+    NUMBER_TO_RELEASE=serca_number_presynaptic/er_area           
+  }  
+  
+  /* presynaptic PMCA */
+  presynaptic_PMCA RELEASE_SITE {
+    SHAPE = (tripartite_synapse_model.tripartite_synapse.presynaptic[presynaptic_membrane])
+    MOLECULE = PMCA_0'
+    DENSITY = PMCA_density_presynaptic
+  }
+
+
+
+
+//INSTANTIATE Ca_Object OBJECT {
+
+/* presynaptic cytoplasm Ca concentration */
+  presynaptic_calcium RELEASE_SITE {
+    SHAPE = (
+              tripartite_synapse_model.tripartite_synapse.presynaptic[ALL]
+              -tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_1[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_2[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_3[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_4[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_5[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_6[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_7[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_8[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_9[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_10[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_11[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_12[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_13[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_15[ALL]
+              -tripartite_synapse_model.tripartite_synapse.vesicle_18[ALL]
+            )
+    MOLECULE = Ca
+   CONCENTRATION = ca_conc_presynaptic
+  }
+  
+/* presynaptic ER Ca concentration */
+  presynaptic_er_calcium RELEASE_SITE {
+   SHAPE = (tripartite_synapse_model.tripartite_synapse.presynaptic_er[ALL])
+   MOLECULE = Cae
+   CONCENTRATION = ca_conc_presynaptic_er
+  }
+}

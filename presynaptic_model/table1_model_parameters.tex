@@ -1,0 +1,292 @@
+\documentclass[11pt]{article}
+
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\geometry{a4paper, left=2.2cm, right=2.2cm, top=2.5cm, bottom=3.0cm}
+
+% Column types
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Section-header row: bold name left, italic reference right
+\newcommand{\secrow}[2]{%
+  \multicolumn{2}{@{}l@{}}{%
+    \rule[-4pt]{0pt}{18pt}%
+    \textbf{#1}%
+    \hfill\textit{#2}%
+  }\\[1pt]}
+
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+
+\begin{document}
+
+% ==================================================================
+\begin{longtable}{@{}P{0.52\textwidth}@{\hspace{1.2em}}Q{0.43\textwidth}@{}}
+
+\caption{Reaction rates for the kinetic schemes used in the simulation.
+$^\dagger$ SERCA rates reparameterised from the cited source to achieve
+physiological steady-state ER Ca$^{2+}$ (see Table~Notes).
+Superscripts \textbf{Ctrl} / \textbf{AD} mark parameters
+that differ between conditions; all other rates are identical.}
+\label{tab:rates}\\
+
+\hline\hline
+\textbf{Transition / Parameter} & \textbf{Value} \\
+\hline
+\endfirsthead
+
+\multicolumn{2}{c}{\tablename~\ref{tab:rates}~(\textit{continued})}\\[4pt]
+\hline\hline
+\textbf{Transition / Parameter} & \textbf{Value} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{2}{r}{\small\itshape Continued on next page}
+\endfoot
+
+\hline\hline
+\endlastfoot
+
+% ==================================================================
+%  1.  Ryanodine receptor
+% ==================================================================
+\secrow{Ryanodine receptor$^{a}$}{Saftenku et al.\ (2001) [1]}
+
+\multicolumn{2}{l}{\quad\textit{L mode}}\\[1pt]
+\quad$C_{1\mathrm{L}} \to C_{2\mathrm{L}},\; C_{2\mathrm{L}} \to C_{1\mathrm{L}}$
+  & $1.24\times10^{6}$ M$^{-1}$s$^{-1}$,\ $13.6$ s$^{-1}$ \\
+\quad$C_{2\mathrm{L}} \to C_{3\mathrm{L}},\; C_{3\mathrm{L}} \to C_{2\mathrm{L}}$
+  & $2.98\times10^{7}$ M$^{-1}$s$^{-1}$,\ $3867$ s$^{-1}$ \\
+\quad$C_{2\mathrm{L}} \to C_{5\mathrm{L}},\; C_{5\mathrm{L}} \to C_{2\mathrm{L}}$
+  & $1.81$ s$^{-1}$,\ $3.63$ s$^{-1}$ \\
+\quad$C_{3\mathrm{L}} \to O_{1\mathrm{L}},\; O_{1\mathrm{L}} \to C_{3\mathrm{L}}$
+  & $731.2$ s$^{-1}$,\ $4185$ s$^{-1}$ \\
+\quad$C_{3\mathrm{L}} \to O_{2\mathrm{L}},\; O_{2\mathrm{L}} \to C_{3\mathrm{L}}$
+  & $24.5$ s$^{-1}$,\ $156.5$ s$^{-1}$ \\
+\quad$C_{3\mathrm{L}} \to O_{3\mathrm{L}},\; O_{3\mathrm{L}} \to C_{3\mathrm{L}}$
+  & $8.5$ s$^{-1}$,\ $111.7$ s$^{-1}$ \\
+\quad$O_{2\mathrm{L}} \to C_{4\mathrm{L}},\; C_{4\mathrm{L}} \to O_{2\mathrm{L}}$
+  & $1995$ s$^{-1}$,\ $415.3$ s$^{-1}$ \\
+\quad$O_{3\mathrm{L}} \to C_{4\mathrm{L}},\; C_{4\mathrm{L}} \to O_{3\mathrm{L}}$
+  & $253.3$ s$^{-1}$,\ $43.3$ s$^{-1}$ \\[4pt]
+
+\multicolumn{2}{l}{\quad\textit{H1 mode}}\\[1pt]
+\quad$C_{1\mathrm{H}} \to C_{2\mathrm{H}},\; C_{2\mathrm{H}} \to C_{1\mathrm{H}}$
+  & $3.26\times10^{6}$ M$^{-1}$s$^{-1}$,\ $116$ s$^{-1}$ \\
+\quad$C_{2\mathrm{H}} \to C_{3\mathrm{H}},\; C_{3\mathrm{H}} \to C_{2\mathrm{H}}$
+  & $6.6\times10^{5}$ M$^{-1}$s$^{-1}$,\ $163$ s$^{-1}$ \\
+\quad$C_{2\mathrm{H}} \to O_{1\mathrm{H}},\; O_{1\mathrm{H}} \to C_{2\mathrm{H}}$
+  & $7.86\times10^{6}$ M$^{-1}$s$^{-1}$,\ $1480$ s$^{-1}$ \\
+\quad$C_{3\mathrm{H}} \to O_{2\mathrm{H}},\; O_{2\mathrm{H}} \to C_{3\mathrm{H}}$
+  & $7.77\times10^{6}$ M$^{-1}$s$^{-1}$,\ $330$ s$^{-1}$ \\
+\quad$O_{2\mathrm{H}} \to C_{4\mathrm{H}},\; C_{4\mathrm{H}} \to O_{2\mathrm{H}}$
+  & $298$ s$^{-1}$,\ $2390$ s$^{-1}$ \\[4pt]
+
+\multicolumn{2}{l}{\quad\textit{L$\,\leftrightarrow\,$H1 transitions (same rate for all three pairs)}}\\[1pt]
+\quad$C_{1\mathrm{L}} \to C_{2\mathrm{H}},\; C_{2\mathrm{H}} \to C_{1\mathrm{L}}$
+  & $667$ M$^{-1}$s$^{-1}$,\ $0.083$ s$^{-1}$ \\
+\quad$C_{2\mathrm{L}} \to C_{3\mathrm{H}},\; C_{3\mathrm{H}} \to C_{2\mathrm{L}}$
+  & $667$ M$^{-1}$s$^{-1}$,\ $0.083$ s$^{-1}$ \\
+\quad$C_{3\mathrm{L}} \to C_{4\mathrm{H}},\; C_{4\mathrm{H}} \to C_{3\mathrm{L}}$
+  & $667$ M$^{-1}$s$^{-1}$,\ $0.083$ s$^{-1}$ \\[4pt]
+
+\quad Ca$^{2+}$ flux ($k_\mathrm{Flux}$, bidirectional)
+  & $1.09\times10^{9}$ M$^{-1}$s$^{-1}$ \\[10pt]
+
+% ==================================================================
+%  2.  SERCA pump
+% ==================================================================
+\secrow{SERCA pump$^{\dagger}$}{Higgins et al.\ (2006) [2]}
+
+\quad$X_0 \to Y_0,\ Y_0 \to X_0$%
+      \newline\small($k_\mathrm{X1\to Y1}$,\ $k_\mathrm{Y1\to X1}$)
+  & $4.28\times10^{-4}$ s$^{-1}$,\ $0.143$ s$^{-1}$ \\[4pt]
+
+\quad$X_2 \to Y_2,\ Y_2 \to X_2$\ (occlusion)%
+      \newline\small($k_\mathrm{X2\to Y2}$,\ $k_\mathrm{Y2\to X2}$)
+  & $0.43$ s$^{-1}$,\ $15.1$ s$^{-1}$ \\[4pt]
+
+\quad$X_{10},\ Y_{10}$\ (1\textsuperscript{st}\ Ca$^{2+}$ off)%
+      \newline\small($k_\mathrm{X1A\to X1}$,\ $k_\mathrm{Y1A\to Y1}$)
+  & $77.0$ s$^{-1}$,\ $245.7$ s$^{-1}$ \\[4pt]
+
+\quad$X_{12}$\ (Ca$^{2+}$ on, cytoplasmic; $k_\mathrm{X1A\to X2}$)%
+      \newline\small(1\textsuperscript{st}\ step:
+       $k_\mathrm{X1\to X1A}=1.64\times10^{9}$ M$^{-1}$s$^{-1}$)
+  & $8.2\times10^{8}$ M$^{-1}$s$^{-1}$ \\[4pt]
+
+\quad$Y_{12}$\ (Ca$^{2+}$ on, luminal; $k_\mathrm{Y1A\to Y2}$)%
+      \newline\small(1\textsuperscript{st}\ step:
+       $k_\mathrm{Y1\to Y1A}=3.0\times10^{5}$ M$^{-1}$s$^{-1}$)
+  & $1.5\times10^{5}$ M$^{-1}$s$^{-1}$ \\[4pt]
+
+\quad ER Ca$^{2+}$ steady-state
+  & $250\ \mu$M$^{\textbf{Ctrl}}$\ /\ $750\ \mu$M$^{\textbf{AD}}$ \\[10pt]
+
+% ==================================================================
+%  3.  ER Ca2+ leak (presenilin)
+% ==================================================================
+\secrow{ER Ca$^{2+}$ leak (presenilin)$^{d}$}{Tu et al.\ (2006) [8]}
+
+\quad Ca$^{2+}$ leak rate ($k_\mathrm{ER,leak}$)
+  & $0.003^{\textbf{Ctrl}}$\ /\ $1.80\times10^{-4}{}^{\textbf{AD}}$ M$^{-1}$s$^{-1}$ \\[10pt]
+
+% ==================================================================
+%  4.  PMCA pump
+% ==================================================================
+\secrow{PMCA pump}{Penheiter et al.\ (2001) [3];\ Brini \& Carafoli (2009) [4]}
+
+\quad Association rate ($k_\mathrm{pm1}$)
+  & $1.5\times10^{8}$ M$^{-1}$s$^{-1}$ \\
+\quad Dissociation rate ($k_\mathrm{pm2}$)
+  & $20$ s$^{-1}$ \\
+\quad Transition rates ($k_\mathrm{pm3}$,\ $k_\mathrm{pm4}$)
+  & $100$ s$^{-1}$,\ $1.0\times10^{5}$ s$^{-1}$ \\
+\quad Leak rate ($k_\mathrm{pmleak}$)$^{c}$
+  & $12.5$ s$^{-1}$ \\[10pt]
+
+% ==================================================================
+%  4.  VDCC (P/Q-type)
+% ==================================================================
+\secrow{VDCC (P/Q-type)}{Bischofberger et al.\ (2002) [5]}
+
+\quad$\alpha_{10},\ \alpha_{20},\ \alpha_{30},\ \alpha_{40}$
+  & $4.04,\ 6.70,\ 4.39,\ 17.33\ \mathrm{ms}^{-1}$ \\
+\quad$\beta_{10},\ \beta_{20},\ \beta_{30},\ \beta_{40}$
+  & $2.88,\ 6.30,\ 8.16,\ 1.84\ \mathrm{ms}^{-1}$ \\
+\quad$V_1,\ V_2,\ V_3,\ V_4$
+  & $49.14,\ 42.08,\ 55.31,\ 26.55\ \mathrm{mV}$ \\[3pt]
+\quad$K_\mathrm{Flux}(V)$
+  & $\displaystyle\frac{A\,V\,N_{\!\mathrm{A}}\bigl[B-e^{-V/C}\bigr]}{2F\bigl[1-e^{V/C}\bigr]}$ \\[14pt]
+  & \small$A=3.72\ \mathrm{pS},\ B=0.3933,\ C=80.36\ \mathrm{mV}$ \\[10pt]
+
+% ==================================================================
+%  5.  Calbindin-D28k
+% ==================================================================
+\secrow{Calbindin-D28k}{N\"{a}gerl et al.\ (2000) [6]}
+
+\quad$k_{\mathrm{H}+},\ k_{\mathrm{M}+}$
+  & $5.5\times10^{6}$ M$^{-1}$s$^{-1}$,\ $4.35\times10^{7}$ M$^{-1}$s$^{-1}$ \\
+\quad$k_{\mathrm{H}-},\ k_{\mathrm{M}-}$
+  & $2.6$ s$^{-1}$,\ $35.8$ s$^{-1}$ \\[10pt]
+
+% ==================================================================
+%  6.  Calcium sensor model
+% ==================================================================
+\secrow{Calcium sensor model}{Nadkarni et al.\ (2010) [7]}
+
+\quad Association rates ($k_{\mathrm{s}+}$,\ $k_{\mathrm{a}+}$)
+  & $6.12\times10^{7}$ M$^{-1}$s$^{-1}$,\ $3.82\times10^{6}$ M$^{-1}$s$^{-1}$ \\
+\quad Dissociation rates ($k_{\mathrm{s}-}$,\ $k_{\mathrm{a}-}$)
+  & $2.32\times10^{3}$ s$^{-1}$,\ $13$ s$^{-1}$ \\
+\quad$a,\ b$
+  & $0.025,\ 0.25$ \\
+\quad$\gamma,\ \delta,\ \varepsilon$
+  & $2\times10^{3}$ s$^{-1}$,\ $4.17\times10^{-4}$ s$^{-1}$,\ $6.33$ ms \\
+
+\end{longtable}
+
+% ==================================================================
+%  Table Notes
+% ==================================================================
+\noindent\textbf{Table Notes.}\vspace{4pt}
+
+\noindent$^{a}$\ \textbf{RyR2 channel number.}
+Control: 150 channels.
+AD: 450 (3$\times$), consistent with the elevated RyR2 expression reported
+in Alzheimer's disease; 5$\times$ (750 channels) explored as a sensitivity
+condition.
+Sub-control sensitivity conditions: $\tfrac{1}{2}\times$ (75 channels)
+and $\tfrac{1}{3}\times$ (50 channels).
+All kinetic rates and Ca$^{2+}$ flux rates are \emph{identical} across
+conditions.
+
+\medskip
+\noindent$^{\dagger}$\ \textbf{SERCA rates reparameterised.}
+All 12 kinetic rate constants are identical for Control and AD.
+They were adjusted from Higgins et al.\ (2006) so that the pump
+achieves physiological ER Ca$^{2+}$ concentrations on a 10--15\,s
+timescale.
+State notation: $X$ = cytoplasmic-facing; $Y$ = luminal-facing;
+subscript = number of bound Ca$^{2+}$ ions
+($X_0 = E_1$ empty, $X_2 = E_1\cdot2\mathrm{Ca}$ occluded,
+$Y_0 = E_2$ empty).
+Statistical factors of~2 are applied to the first binding step in each
+direction: $k_{X1\to X1A}=2\,k_{X_{12}}$ and $k_{Y1\to Y1A}=2\,k_{Y_{12}}$.
+
+\medskip
+\noindent$^{c}$\ PMCA leak rate computed dynamically to balance
+Ca$^{2+}$ influx at rest ($[\mathrm{Ca}^{2+}]_i=100\,\mathrm{nM}$),
+yielding $k_\mathrm{pmleak}=12.5\,\mathrm{s}^{-1}$ at PMCA surface
+density 180\,$\mu\mathrm{m}^{-2}$ ($K_m=0.8\,\mu\mathrm{M}$).
+The same value holds for both conditions.
+
+\medskip
+\noindent$^{d}$\ \textbf{ER Ca$^{2+}$ leak (presenilin).}
+Presenilin-1/2 (PSEN1/2) functions as a passive ER Ca$^{2+}$ leak
+channel; familial AD mutations ablate this conductance, leading to
+ER Ca$^{2+}$ overloading.
+The Control model uses a leak that equilibrates ER Ca$^{2+}$ at
+250\,$\mu$M; the AD model uses a greatly reduced (near-zero) leak,
+raising ER Ca$^{2+}$ to 750\,$\mu$M.
+
+% ==================================================================
+%  References
+% ==================================================================
+\bigskip
+\noindent\textbf{References}\vspace{4pt}
+
+\noindent[1]\ Saftenku, E.\,E., Williams, A.\,J., \& Sitsapesan, R.\ (2001).
+Markovian models of low and high activity levels of cardiac ryanodine
+receptors.
+\textit{Biophysical Journal}, \textbf{80}(6), 2727--2741.
+
+\smallskip
+\noindent[2]\ Higgins, E.\,R., Cannell, M.\,B., \& Sneyd, J.\ (2006).
+A buffering SERCA pump in models of calcium dynamics.
+\textit{Biophysical Journal}, \textbf{91}(1), 151--163.
+
+\smallskip
+\noindent[3]\ Penheiter, A.\,R., Filoteo, A.\,G., Croy, C.\,L., \&
+Penniston, J.\,T.\ (2001).
+Characterization of the deafwaddler mutant of the rat plasma membrane
+calcium-ATPase 2.
+\textit{Hearing Research}, \textbf{162}(1--2), 19--28.
+
+\smallskip
+\noindent[4]\ Brini, M., \& Carafoli, E.\ (2009).
+Calcium pumps in health and disease.
+\textit{Physiological Reviews}, \textbf{89}(4), 1341--1378.
+
+\smallskip
+\noindent[5]\ Bischofberger, J., Geiger, J.\,R.\,P., \& Jonas, P.\ (2002).
+Timing and efficacy of Ca$^{2+}$ channel activation in hippocampal
+mossy fiber boutons.
+\textit{Journal of Neuroscience}, \textbf{22}(24), 10593--10602.
+
+\smallskip
+\noindent[6]\ N\"{a}gerl, U.\,V., Novo, D., Mody, I., \& Vergara, J.\,L.\ (2000).
+Binding kinetics of calbindin-D28k determined by flash photolysis of
+caged Ca$^{2+}$.
+\textit{Biophysical Journal}, \textbf{79}(6), 3009--3018.
+
+\smallskip
+\noindent[7]\ Nadkarni, S., Bartol, T.\,M., Sejnowski, T.\,J., \& Levine, H.\ (2010).
+Modelling vesicular release at hippocampal synapses.
+\textit{PLoS Computational Biology}, \textbf{6}(11), e1000983.
+
+\smallskip
+\noindent[8]\ Tu, H.\ et al.\ (2006).
+Presenilins form ER Ca$^{2+}$ leak channels, a function disrupted by
+familial Alzheimer's disease-linked mutations.
+\textit{Cell}, \textbf{126}(5), 981--993.
+
+\end{document}

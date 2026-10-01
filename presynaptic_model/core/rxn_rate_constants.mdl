@@ -1,0 +1,22 @@
+/* generic fast rate constant */
+	fast_rate = 1e100
+
+/* rates for De Young-Keizer Model of IP3R */
+	a1 = 400e6
+	a2 = 0.2e6
+	a3 = 400e6
+	a4 = 0.2e6
+	a5 = 20e6
+	b1 = 52
+	b2 = 0.21
+	b3 = 377.2
+	b4 = 0.029
+	b5 = 1.64
+	
+	
+/* rates for Glutamate Uptake */
+/* Geiger et al., 1999, Handbook of Exp. Pharm.  */
+	k_GluT_0_1 = 1.8e7
+	k_GluT_1_0 = 180
+	k_GluT_1_2 = 180
+	k_GluT_2_0 = 25.7

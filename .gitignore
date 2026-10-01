@@ -1,0 +1,17 @@
+# Python bytecode / cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# NEURON compiled mechanisms (regenerate with `nrnivmodl .` in
+# postsynaptic_model/mechanisms/mechanism/ -- see postsynaptic_model/README.md)
+postsynaptic_model/mechanisms/mechanism/x86_64/
+postsynaptic_model/mechanisms/mechanism/aarch64/
+
+# Editor / OS cruft
+.DS_Store
+*.swp
+.vscode/
+.idea/

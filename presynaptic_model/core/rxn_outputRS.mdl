@@ -1,0 +1,159 @@
+// Reaction Output
+REACTION_DATA_OUTPUT {
+
+	OUTPUT_BUFFER_SIZE = 100
+	STEP = 10*dt
+	SHOW_EXACT_TIME = OFF
+	HEADER = "#"
+
+    /*	Ca */
+	{	COUNT[Ca, tripartite_synapse_model.tripartite_synapse.presynaptic[active_zone_plane], ESTIMATE_CONCENTRATION]*EXPRESSION[2.0] : "Ca.Conc.az",
+		COUNT[Ca, tripartite_synapse_model.tripartite_synapse.presynaptic] : "Ca.Pre",
+	//	COUNT[Ca, tripartite_synapse_model.tripartite_synapse.postsynaptic] : "Ca.Post",
+		COUNT[Cae, tripartite_synapse_model.tripartite_synapse.presynaptic_er] : "Ca.ER"
+	}	=> output_folder &"/dat/ca.dat"
+
+    /*	VDCC Flux (Cumulative)*/
+	{COUNT[VDCC_Ca_flux,WORLD]} => output_folder & "/dat/vdcc_pq_ca_flux.dat"
+
+    /*	VDCC sync, async and spont Glu release */
+	{TRIGGER[synchronous_release_0, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.sync_0.dat"
+	{TRIGGER[synchronous_release_1, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.sync_1.dat"
+	{TRIGGER[synchronous_release_2, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.sync_2.dat"
+	{TRIGGER[asynchronous_release_0, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.async_0.dat"
+	{TRIGGER[asynchronous_release_1, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.async_1.dat"
+	{TRIGGER[asynchronous_release_2, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.async_2.dat"
+	{TRIGGER[asynchronous_release_3, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.async_3.dat"
+	{TRIGGER[asynchronous_release_4, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.async_4.dat"
+	{TRIGGER[spontaneous_release, tripartite_synapse_model.tripartite_synapse.presynaptic]}
+		=> output_folder & "/dat/vdcc.spont.dat"
+
+/*	SERCA PUMP */
+	{	COUNT[SERCA_X1, tripartite_synapse_model.tripartite_synapse.presynaptic_er],
+		COUNT[SERCA_X1A, tripartite_synapse_model.tripartite_synapse.presynaptic_er],
+		COUNT[SERCA_X2, tripartite_synapse_model.tripartite_synapse.presynaptic_er],
+		COUNT[SERCA_Y2, tripartite_synapse_model.tripartite_synapse.presynaptic_er],
+		COUNT[SERCA_Y1A, tripartite_synapse_model.tripartite_synapse.presynaptic_er],
+		COUNT[SERCA_Y1, tripartite_synapse_model.tripartite_synapse.presynaptic_er]
+	}	=> output_folder &"/dat/serca_mol.dat"
+
+	{	COUNT[serca_y2_x2, tripartite_synapse_model.tripartite_synapse.presynaptic_er] : "SERCA_Ca_out_flux",
+		COUNT[serca_x2_y2, tripartite_synapse_model.tripartite_synapse.presynaptic_er] : "SERCA_Ca_in_flux"
+	} 	=> output_folder & "/dat/serca_ca_flux.dat"
+
+    /*	RyR */
+	{	COUNT[RyRC1_L, WORLD],
+		COUNT[RyRC2_L, WORLD],
+		COUNT[RyRC3_L, WORLD],
+		COUNT[RyRC4_L, WORLD],
+		COUNT[RyRC5_L, WORLD],
+		COUNT[RyRO1_L, WORLD],
+		COUNT[RyRO2_L, WORLD],
+		COUNT[RyRO3_L, WORLD],
+		COUNT[RyRC1_H1, WORLD],
+		COUNT[RyRC2_H1, WORLD],
+		COUNT[RyRC3_H1, WORLD],
+		COUNT[RyRC4_H1, WORLD],
+		COUNT[RyRO1_H1, WORLD],
+		COUNT[RyRO2_H1, WORLD]
+	}	=> output_folder &"/dat/ryr_mol.dat"
+
+	{	COUNT[ryro1_l_ca_flux_out, WORLD]
+		+ COUNT[ryro2_l_ca_flux_out, WORLD]
+		+ COUNT[ryro3_l_ca_flux_out, WORLD]
+		+ COUNT[ryro1_h1_ca_flux_out, WORLD]
+		+ COUNT[ryro2_h1_ca_flux_out, WORLD] : "out",
+		
+		COUNT[ryro1_l_ca_flux_in, WORLD]
+		+ COUNT[ryro2_l_ca_flux_in, WORLD]
+		+ COUNT[ryro3_l_ca_flux_in, WORLD]
+		+ COUNT[ryro1_h1_ca_flux_in, WORLD]
+		+ COUNT[ryro2_h1_ca_flux_in, WORLD] : "in"
+	}	=> output_folder &"/dat/ryr_ca_flux.dat"
+
+    /* AZ */
+	{   COUNT[X0Y0, WORLD],
+        COUNT[X1Y0, WORLD],
+        COUNT[X2Y0, WORLD],
+        COUNT[X3Y0, WORLD],
+        COUNT[X4Y0, WORLD],
+        COUNT[X5Y0, WORLD],
+        COUNT[X0Y1, WORLD],
+        COUNT[X1Y1, WORLD],
+        COUNT[X2Y1, WORLD],
+        COUNT[X3Y1, WORLD],
+        COUNT[X4Y1, WORLD],
+        COUNT[X5Y1, WORLD],
+        COUNT[X0Y2, WORLD],
+        COUNT[X1Y2, WORLD],
+        COUNT[X2Y2, WORLD],
+        COUNT[X3Y2, WORLD],
+        COUNT[X4Y2, WORLD],
+        COUNT[X5Y2, WORLD]
+    }	=> output_folder &"/dat/az.dat"
+
+/*	PMCA and Leak */
+
+   {	COUNT[PMCA_0, WORLD],
+		COUNT[PMCA_1, WORLD],
+		COUNT[PMCA_2, WORLD]
+	}	=> output_folder &"/dat/pmca_mol.dat"
+	
+	{	COUNT[PMCA_Ca_flux_out, WORLD] - COUNT[PMCA_Ca_flux_in, WORLD] : "PMCAFlux",
+		COUNT[PMCA_Ca_leak_flux, WORLD] : "PMCAleakFlux",
+//		COUNT[PM_leak_Ca_flux, WORLD] : "PMleakFlux",
+		COUNT[ER_leak_Ca_flux, WORLD] : "ERleakFlux" 
+	} => output_folder &"/dat/pmca&leak_ca_flux.dat"
+
+    /*	Readily Releasable Pool (RRP)*/
+	{
+		EXPRESSION[15] 
+		- COUNT[X0Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X1Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X2Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X3Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X4Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y0e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X0Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X1Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X2Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X3Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X4Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y1e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X0Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X1Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X2Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X3Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X4Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y2e, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y0r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y1r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X0Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X1Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X2Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X3Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X4Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic]
+		- COUNT[X5Y2r, tripartite_synapse_model.tripartite_synapse.presynaptic] : "RRP"
+	}	=> output_folder &"/dat/rrp.dat"
+
+/*	Calbindin */
+	{	COUNT[cb_H0M0, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h0m0",
+		COUNT[cb_H0M1, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h0m1",
+		COUNT[cb_H0M2, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h0m2",
+		COUNT[cb_H1M0, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h1m0",
+		COUNT[cb_H1M1, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h1m1",
+		COUNT[cb_H1M2, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h1m2",
+		COUNT[cb_H2M0, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h2m0",
+		COUNT[cb_H2M1, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h2m1",
+		COUNT[cb_H2M2, tripartite_synapse_model.tripartite_synapse.presynaptic] : "h2m2"
+	}	=> output_folder & "/dat/calbindin_mol.dat"
+
+}

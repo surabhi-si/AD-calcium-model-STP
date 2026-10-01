@@ -1,0 +1,156 @@
+
+DEFINE_REACTIONS {
+
+/* Synchronous release pathway 0 */
+  (X0Y0') + Ca, <-> (X1Y0')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y0') + Ca, <-> (X2Y0')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y0') + Ca, <-> (X3Y0')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y0') + Ca, <-> (X4Y0')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y0') + Ca, <-> (X5Y0')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+  (X5Y0') -> (X5Y0r')    [ COMPLEX_RATE az_sudhof release_vesicle_sync ] : synchronous_release_0
+  (X5Y0r') -> (X5Y0e')   [ k_reltrig_pre_reset ]
+
+  (X0Y0e') + Ca, <-> (X1Y0e')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y0e') + Ca, <-> (X2Y0e')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y0e') + Ca, <-> (X3Y0e')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y0e') + Ca, <-> (X4Y0e')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y0e') + Ca, <-> (X5Y0e')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+/* redock vesicle to fresh snare complex */
+  (X0Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X1Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X2Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X3Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X4Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X5Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+
+/* redock vesicle to reused snare complex */
+/*
+  (X0Y0e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X1Y0e') -> (X1Y0')    [ k_reltrig_pre_redock ]
+  (X2Y0e') -> (X2Y0')    [ k_reltrig_pre_redock ]
+  (X3Y0e') -> (X3Y0')    [ k_reltrig_pre_redock ]
+  (X4Y0e') -> (X4Y0')    [ k_reltrig_pre_redock ]
+  (X5Y0e') -> (X5Y0')    [ k_reltrig_pre_redock ]
+*/
+
+
+/* Synchronous release pathway 1 */
+  (X0Y1') + Ca, <-> (X1Y1')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y1') + Ca, <-> (X2Y1')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y1') + Ca, <-> (X3Y1')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y1') + Ca, <-> (X4Y1')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y1') + Ca, <-> (X5Y1')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+  (X5Y1') -> (X5Y1r')    [ COMPLEX_RATE az_sudhof release_vesicle_sync ] : synchronous_release_1
+  (X5Y1r') -> (X5Y1e')   [ k_reltrig_pre_reset ]
+
+  (X0Y1e') + Ca, <-> (X1Y1e')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y1e') + Ca, <-> (X2Y1e')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y1e') + Ca, <-> (X3Y1e')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y1e') + Ca, <-> (X4Y1e')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y1e') + Ca, <-> (X5Y1e')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+/* redock vesicle to fresh snare complex */
+  (X0Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X1Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X2Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X3Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X4Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X5Y1e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+
+/* redock vesicle to reused snare complex */
+/*
+  (X0Y1e') -> (X0Y1')    [ k_reltrig_pre_redock ]
+  (X1Y1e') -> (X1Y1')    [ k_reltrig_pre_redock ]
+  (X2Y1e') -> (X2Y1')    [ k_reltrig_pre_redock ]
+  (X3Y1e') -> (X3Y1')    [ k_reltrig_pre_redock ]
+  (X4Y1e') -> (X4Y1')    [ k_reltrig_pre_redock ]
+  (X5Y1e') -> (X5Y1')    [ k_reltrig_pre_redock ]
+*/
+
+
+/* Synchronous release pathway 2 */
+  (X0Y2') + Ca, <-> (X1Y2')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y2') + Ca, <-> (X2Y2')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y2') + Ca, <-> (X3Y2')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y2') + Ca, <-> (X4Y2')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y2') + Ca, <-> (X5Y2')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+  (X5Y2') -> (X5Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_sync_facilitated ] : synchronous_release_2
+  (X5Y2r') -> (X5Y2e')   [ k_reltrig_pre_reset ]
+
+  (X0Y2e') + Ca, <-> (X1Y2e')    [> 5*k_reltrig_sudhof_f, < 1*k_reltrig_sudhof_b*(b_sudhof^0)]
+  (X1Y2e') + Ca, <-> (X2Y2e')    [> 4*k_reltrig_sudhof_f, < 2*k_reltrig_sudhof_b*(b_sudhof^1)]
+  (X2Y2e') + Ca, <-> (X3Y2e')    [> 3*k_reltrig_sudhof_f, < 3*k_reltrig_sudhof_b*(b_sudhof^2)]
+  (X3Y2e') + Ca, <-> (X4Y2e')    [> 2*k_reltrig_sudhof_f, < 4*k_reltrig_sudhof_b*(b_sudhof^3)]
+  (X4Y2e') + Ca, <-> (X5Y2e')    [> 1*k_reltrig_sudhof_f, < 5*k_reltrig_sudhof_b*(b_sudhof^4)]
+
+/* redock vesicle to fresh snare complex */
+  (X0Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X1Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X2Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X3Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X4Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+  (X5Y2e') -> (X0Y0')    [ k_reltrig_pre_redock ]
+
+/* redock vesicle to reused snare complex */
+/*
+  (X0Y2e') -> (X0Y2')    [ k_reltrig_pre_redock ]
+  (X1Y2e') -> (X1Y2')    [ k_reltrig_pre_redock ]
+  (X2Y2e') -> (X2Y2')    [ k_reltrig_pre_redock ]
+  (X3Y2e') -> (X3Y2')    [ k_reltrig_pre_redock ]
+  (X4Y2e') -> (X4Y2')    [ k_reltrig_pre_redock ]
+  (X5Y2e') -> (X5Y2')    [ k_reltrig_pre_redock ]
+*/
+
+
+/* Asynchronous release pathways */
+  (X0Y0') + Ca, <-> (X0Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X0Y1') + Ca, <-> (X0Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X1Y0') + Ca, <-> (X1Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X1Y1') + Ca, <-> (X1Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X2Y0') + Ca, <-> (X2Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X2Y1') + Ca, <-> (X2Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X3Y0') + Ca, <-> (X3Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X3Y1') + Ca, <-> (X3Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X4Y0') + Ca, <-> (X4Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X4Y1') + Ca, <-> (X4Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X5Y0') + Ca, <-> (X5Y1') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X5Y1') + Ca, <-> (X5Y2') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+
+  (X0Y2') -> (X0Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_0
+  (X1Y2') -> (X1Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_1
+  (X2Y2') -> (X2Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_2
+  (X3Y2') -> (X3Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_3
+  (X4Y2') -> (X4Y2r')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_4
+//  (X5Y2') -> (X5Y2ar')    [ COMPLEX_RATE az_sudhof release_vesicle_async ] : asynchronous_release_5
+
+  (X0Y2r') -> (X0Y2e')   [ k_reltrig_pre_reset ]
+  (X1Y2r') -> (X1Y2e')   [ k_reltrig_pre_reset ]
+  (X2Y2r') -> (X2Y2e')   [ k_reltrig_pre_reset ]
+  (X3Y2r') -> (X3Y2e')   [ k_reltrig_pre_reset ]
+  (X4Y2r') -> (X4Y2e')   [ k_reltrig_pre_reset ]
+  (X5Y2ar') -> (X5Y2e')   [ k_reltrig_pre_reset ]
+
+  (X0Y0e') + Ca, <-> (X0Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X0Y1e') + Ca, <-> (X0Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X1Y0e') + Ca, <-> (X1Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X1Y1e') + Ca, <-> (X1Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X2Y0e') + Ca, <-> (X2Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X2Y1e') + Ca, <-> (X2Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X3Y0e') + Ca, <-> (X3Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X3Y1e') + Ca, <-> (X3Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X4Y0e') + Ca, <-> (X4Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X4Y1e') + Ca, <-> (X4Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+  (X5Y0e') + Ca, <-> (X5Y1e') [> 2*k_reltrig_sudhof_af, < 1*k_reltrig_sudhof_ab]
+  (X5Y1e') + Ca, <-> (X5Y2e') [> 1*k_reltrig_sudhof_af, < 2*k_reltrig_sudhof_ab*b_sudhof]
+
+
+  /* Spontaneous release */
+
+  (X0Y0') -> (X0Y0r') [COMPLEX_RATE az_sudhof release_vesicle_spont] : spontaneous_release
+  (X0Y0r') -> (X0Y0e')   [ k_reltrig_pre_reset ]
+
+}

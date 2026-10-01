@@ -1,0 +1,15 @@
+/* rate for ER leak */
+	k_ER_leak = 0.0001799063 //750 uM
+	
+DEFINE_MOLECULES {
+
+ ER_leak {DIFFUSION_CONSTANT_2D = 0}
+
+}
+
+DEFINE_REACTIONS {
+
+/* Ca leak from ER to cytoplasm */
+  Cae'+ ER_leak' -> ER_leak' + Ca, [k_ER_leak] : ER_leak_Ca_flux
+   
+}

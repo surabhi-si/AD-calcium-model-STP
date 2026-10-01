@@ -1,0 +1,47 @@
+sprintf(my_seed,"%05g",SEED)
+
+iterations = 70e3
+
+INCLUDE_FILE = "../../../core/outputLoc.mdl"
+INCLUDE_FILE = "../../../core/initialization.mdl"
+
+INCLUDE_FILE = "../misc_250.mdl"
+serca_number_presynaptic = 0
+ER_leak_density_presynaptic=8678/er_area
+ryr_number_presynaptic = 1
+VDCC_num = 80
+VDCC_number_presynaptic = VDCC_num
+INCLUDE_FILE = "../../../core/rxn_rate_constants.mdl"
+
+/* Output Folder */
+isi = "40"
+sprintf(VDCC, "%g", VDCC_num)
+fname = "RSI" & isi & "V" & VDCC & "C250uM_ERblocked"
+output_folder = outputLoc & "prvsppf_modeltesting/control_ERblocked/" &fname& "/s_" & my_seed
+
+/* Rates for P/Q-type Voltage Dependent Calcium Channels */
+/* From Bischoffberger et al., 2005, , Biophys. J.*/
+k_VDCC_PQ_C01 = "../../vdcc_dat/VDCC_PQ_C01_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C12 = "../../vdcc_dat/VDCC_PQ_C12_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C23 = "../../vdcc_dat/VDCC_PQ_C23_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C34 = "../../vdcc_dat/VDCC_PQ_C34_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C43 = "../../vdcc_dat/VDCC_PQ_C43_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C32 = "../../vdcc_dat/VDCC_PQ_C32_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C21 = "../../vdcc_dat/VDCC_PQ_C21_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_C10 = "../../vdcc_dat/VDCC_PQ_C10_" & isi & "ms_ppf.dat"
+k_VDCC_PQ_Ca  = "../../vdcc_dat/VDCC_PQ_Ca_"  & isi & "ms_ppf.dat"
+
+INCLUDE_FILE = "../../../core/tripartite_synapse_v7_rrp_15_er_vdcc_junction.geometry.mdl"
+
+INCLUDE_FILE = "../../../core/AZ.mdl"
+INCLUDE_FILE = "../../../core/calbindin.mdl"
+INCLUDE_FILE = "../ERleak_250.mdl"
+INCLUDE_FILE = "../../../core/PMCA.mdl"
+INCLUDE_FILE = "../../../core/VDCC.mdl"
+INCLUDE_FILE = "../RyR.mdl"
+INCLUDE_FILE = "../../../core/surface_classes.mdl"
+INCLUDE_FILE = "../SERCA_ss_250uM.mdl"
+INCLUDE_FILE = "../../../core/instantiate.mdl"
+
+INCLUDE_FILE = "../../../core/rxn_outputRS.mdl"
+INCLUDE_FILE = "../../../core/viz_output.mdl"

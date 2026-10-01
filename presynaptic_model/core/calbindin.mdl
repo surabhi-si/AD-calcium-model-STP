@@ -1,0 +1,62 @@
+D_cb = 0.28e-6
+calbindin_conc_tot = 45e-6
+presynaptic_calbindin_conc_tot = calbindin_conc_tot
+
+cb_H0M0_feq=0.542
+cb_H0M1_feq=0.132
+cb_H1M0_feq=0.229
+cb_H1M1_feq=0.0557
+cb_H0M2_feq=0.008
+cb_H2M0_feq=0.0242
+cb_H1M2_feq=0.00338
+cb_H2M1_feq=0.00589
+cb_H2M2_feq=0.000358
+
+cb_H_on = 0.55e7
+cb_H_off= 2.6
+cb_M_on = 4.35e7
+cb_M_off= 35.8
+
+DEFINE_MOLECULES {
+
+ cb_H0M0 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H0M1 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H0M2 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H1M0 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H1M1 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H1M2 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H2M0 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H2M1 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ cb_H2M2 {DIFFUSION_CONSTANT_3D = D_cb CUSTOM_SPACE_STEP = 0.100 TARGET_ONLY}
+ 
+}
+
+DEFINE_REACTIONS {
+/* -------- Calcium Binding Protein Calbindin ------ */
+  cb_H0M0+Ca->cb_H1M0[2*cb_H_on]
+  cb_H1M0->cb_H0M0+Ca[cb_H_off]
+  cb_H1M0+Ca->cb_H2M0[cb_H_on]
+  cb_H2M0->cb_H1M0+Ca[2*cb_H_off]
+  cb_H0M1+Ca->cb_H1M1[2*cb_H_on]
+  cb_H1M1->cb_H0M1+Ca[cb_H_off]
+  cb_H1M1+Ca->cb_H2M1[cb_H_on]
+  cb_H2M1->cb_H1M1+Ca[2*cb_H_off]
+  cb_H0M2+Ca->cb_H1M2[2*cb_H_on]
+  cb_H1M2->cb_H0M2+Ca[cb_H_off]
+  cb_H1M2+Ca->cb_H2M2[cb_H_on]
+  cb_H2M2->cb_H1M2+Ca[2*cb_H_off]
+
+  cb_H0M0+Ca->cb_H0M1[2*cb_M_on]
+  cb_H0M1->cb_H0M0+Ca[cb_M_off]
+  cb_H0M1+Ca->cb_H0M2[cb_M_on]
+  cb_H0M2->cb_H0M1+Ca[2*cb_M_off]
+  cb_H1M0+Ca->cb_H1M1[2*cb_M_on]
+  cb_H1M1->cb_H1M0+Ca[cb_M_off]
+  cb_H1M1+Ca->cb_H1M2[cb_M_on]
+  cb_H1M2->cb_H1M1+Ca[2*cb_M_off]
+  cb_H2M0+Ca->cb_H2M1[2*cb_M_on]
+  cb_H2M1->cb_H2M0+Ca[cb_M_off]
+  cb_H2M1+Ca->cb_H2M2[cb_M_on]
+  cb_H2M2->cb_H2M1+Ca[2*cb_M_off]
+  
+}

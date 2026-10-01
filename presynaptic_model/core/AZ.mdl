@@ -1,0 +1,120 @@
+	k_reltrig_f = 1e8
+	k_reltrig_b = 6e3
+	fusion_rate = 6e3
+	k_reltrig_pre_reset = 158
+    k_reltrig_astro_reset = 0.1
+
+    k_reltrig_neher_f = 4*9e7
+	k_reltrig_neher_b = 9.5e3
+	beta_neher = 0.25
+	fusion_rate_neher = 3*(6e3/5)
+    k_reltrig_pre_redock = 1/2.8
+    k_reltrig_sudhof_f = (0.4*1.53e8)
+	k_reltrig_sudhof_b = (0.4*5.8e3)
+	k_reltrig_sudhof_af = (1.3*2.94e6)
+	k_reltrig_sudhof_ab = (0.5*130/5)
+	b_sudhof = 0.25
+    fusion_rate_sync_sudhof = 6000
+	fusion_rate_async_sudhof = 50
+    fusion_rate_sync_facilitated_sudhof = fusion_rate_sync_sudhof * fusion_rate_async_sudhof
+	fusion_rate_sudhof_spont = 0.417e-3
+
+    k_reltrig_sakmann_f = 3e8
+	k_reltrig_sakmann_b = 3e3
+	gamma_sakmann = 30e3/5
+	delta_sakmann = 8e3
+	fusion_rate_sakmann = 40e3
+
+    INCLUDE_FILE = "../../../core/transmitter_trigger_complex_mol_15d7_sudhof_v2.mdl"
+    INCLUDE_FILE = "../../../core/transmitter_trigger_complex_rxn_sudhof_v2.mdl"
+
+    /* 20 nm distance from trigger */
+presynaptic_az_y=0.020
+presynaptic_az_z=0
+presynaptic_active_zone RELEASE_SITE {
+  SHAPE = LIST
+  MOLECULE_POSITIONS{
+    az_sudhof' [-0.025,0,0]
+  }
+  SITE_DIAMETER = 0.02
+}
+
+synchronous_release_sites OBJECT {
+  synchronous_release_site_0 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = synchronous_release_0
+  }
+   synchronous_release_site_1 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = synchronous_release_1
+  }
+   synchronous_release_site_2 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = synchronous_release_2
+  }
+}
+
+asynchronous_release_sites OBJECT {
+  asynchronous_release_site_0 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = asynchronous_release_0
+  }
+  asynchronous_release_site_1 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = asynchronous_release_1
+  }
+  asynchronous_release_site_2 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = asynchronous_release_2
+  }
+  asynchronous_release_site_3 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = asynchronous_release_3
+  }
+  asynchronous_release_site_4 RELEASE_SITE {
+    SHAPE = SPHERICAL
+    LOCATION = [0,0,1e-3]
+    MOLECULE = Glu
+    SITE_DIAMETER = 0
+    NUMBER_TO_RELEASE = n_Glu_neuron
+    RELEASE_PATTERN = asynchronous_release_4
+  }
+
+}
+
+spontaneous_release_site RELEASE_SITE {
+  SHAPE = SPHERICAL
+  LOCATION = [0,0,1e-3]
+  MOLECULE = Glu
+  SITE_DIAMETER = 0
+  NUMBER_TO_RELEASE = n_Glu_neuron
+  RELEASE_PATTERN = spontaneous_release
+}

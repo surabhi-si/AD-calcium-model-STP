@@ -1,0 +1,6 @@
+ryr_disk RELEASE_SITE {
+      SHAPE = LIST
+      MOLECULE_POSITIONS {
+  }
+      SITE_RADIUS = 0.03
+    }

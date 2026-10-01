@@ -1,0 +1,42 @@
+vdcc_distance = 350
+
+
+DEFINE_MOLECULES {
+ VDCC_L.C {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_L.O {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ.C {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ.O {DIFFUSION_CONSTANT_2D = 0}
+
+ VDCC_PQ_C0 {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ_C1 {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ_C2 {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ_C3 {DIFFUSION_CONSTANT_2D = 0}
+ VDCC_PQ_O {DIFFUSION_CONSTANT_2D = 0}
+}
+
+DEFINE_REACTIONS {
+/* L-type Voltage Dependent Calcium Channels */
+  VDCC_L.C' -> VDCC_L.O'        ["../../vdcc_dat/vdcc_l_activation_rate.dat"]
+  VDCC_L.O' -> VDCC_L.O'+ Ca,   ["../../vdcc_dat/vdcc_l_IV_2.5.dat"]
+  VDCC_L.O' -> VDCC_L.C'        [1000]
+  
+/* P/Q-type Voltage Dependent Calcium Channels */
+/* From Bischoffberger et al., 2002, Neuroscience J.*/
+  VDCC_PQ_C0' <-> VDCC_PQ_C1'     [>k_VDCC_PQ_C01, <k_VDCC_PQ_C10]
+  VDCC_PQ_C1' <-> VDCC_PQ_C2'     [>k_VDCC_PQ_C12, <k_VDCC_PQ_C21]
+  VDCC_PQ_C2' <-> VDCC_PQ_C3'     [>k_VDCC_PQ_C23, <k_VDCC_PQ_C32]
+  VDCC_PQ_C3' <-> VDCC_PQ_O'      [>k_VDCC_PQ_C34, <k_VDCC_PQ_C43]
+  VDCC_PQ_O' -> VDCC_PQ_O' + Ca,  [k_VDCC_PQ_Ca] : VDCC_Ca_flux
+}
+
+sprintf(vdcc_disk_file,"../../vdcc_disks/vdcc_disk_%g.mdl",VDCC_num)
+INCLUDE_FILE = vdcc_disk_file
+vdcc_disk_scale = SQRT(VDCC_num/(PI*egd))
+
+vdcc_release_disk OBJECT {
+  vdcc_disk OBJECT vdcc_disk {
+     SCALE = [vdcc_disk_scale,vdcc_disk_scale,vdcc_disk_scale]
+     ROTATE = [0, 1, 0], 90
+     TRANSLATE = [-0.025, vdcc_distance/1000, 0]
+  }
+}
