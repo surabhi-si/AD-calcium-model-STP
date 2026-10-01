@@ -30,11 +30,13 @@ details. This file is the map between them and the paper.
 | 8 | [`figures/fig8_poirazi_synapse_validation.ipynb`](figures/fig8_poirazi_synapse_validation.ipynb) | Postsynaptic CA1 synapse calibration against Smith, Ellis-Davies & Magee (2003) |
 | 9 | [`figures/fig9_postsynaptic_train_EPSC.ipynb`](figures/fig9_postsynaptic_train_EPSC.ipynb) | Postsynaptic somatic EPSC across the train, 4 conditions |
 | 10 | [`figures/fig10_sustained_unreliability.ipynb`](figures/fig10_sustained_unreliability.ipynb) | AD synapse reliability breakdown under sustained stimulation |
-| 11 | [`figures/fig11_sync_async_reliability.ipynb`](figures/fig11_sync_async_reliability.ipynb) | Synchronous vs. asynchronous release tracking reliability differently |
 | S1 | [`figures/figS1_model_fits_timescales.ipynb`](figures/figS1_model_fits_timescales.ipynb) | Kinetics/timescale model fits underlying Figure 3's rise/decay numbers |
 | S2 | [`figures/figS2_ER_steadystate.ipynb`](figures/figS2_ER_steadystate.ipynb) | Confirms resting ER calcium is at steady state pre-stimulus |
-| S3 | [`figures/figS3_ER_hyperactivity_RyRunder250.ipynb`](figures/figS3_ER_hyperactivity_RyRunder250.ipynb) | RyR under-expression without ER calcium overload |
-| S4 | [`figures/figS4_paired_pulse_ISI_sync_coupling.ipynb`](figures/figS4_paired_pulse_ISI_sync_coupling.ipynb) | Paired-pulse ISI dependence and synchronous-release calcium coupling |
+| S3 | [`figures/figS3_RyR_train_0_8_serca.ipynb`](figures/figS3_RyR_train_0_8_serca.ipynb) | RyR dosage (3x vs 1/3x) effects on peak ER calcium, net RyR flux, and facilitation across a 20-pulse, 20 Hz train |
+| S4 | [`figures/figS4_ER_hyperactivity_RyRunder250.ipynb`](figures/figS4_ER_hyperactivity_RyRunder250.ipynb) | RyR under-expression without ER calcium overload |
+| S5 | [`figures/figS5_train_calcium_CV.ipynb`](figures/figS5_train_calcium_CV.ipynb) | Active-zone [Ca2+] variability (CV) across the train; confirms Figure 10's growing release unreliability isn't driven by calcium-signal variability |
+| S6 | [`figures/figS6_paired_pulse_ISI_sync_coupling.ipynb`](figures/figS6_paired_pulse_ISI_sync_coupling.ipynb) | Paired-pulse ISI dependence and synchronous-release calcium coupling |
+| S7 | [`figures/figS7_125nm_facilitation.ipynb`](figures/figS7_125nm_facilitation.ipynb) | Facilitation across the train at 125 nm ER-PM distance, compared with Figure 6's 15 nm standard distance |
 
 Every equation computed inline across these notebooks is documented in
 [`figures/equations_reference.pdf`](figures/equations_reference.pdf). Equations in the
