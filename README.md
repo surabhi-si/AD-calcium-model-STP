@@ -22,7 +22,7 @@ details. This file is the map between them and the paper.
 
 | Figure | Notebook | Contents |
 |---|---|---|
-| 3 | [`figures/fig3_single_AP.ipynb`](figures/fig3_single_AP.ipynb) | Single-AP presynaptic dynamics: VDCC/RyR flux, cytosolic/AZ/ER calcium, calbindin/SERCA buffering, PMCA extrusion, vesicle release timing |
+| 3 | [`figures/fig3_model_fits_timescales.ipynb`](figures/fig3_model_fits_timescales.ipynb) | Kinetics/timescale model fits for the single-AP cascade (rise/decay time constants, release-event likelihood fits) and the supplementary timescale table |
 | 4 | [`figures/fig4_PSblocked_paired_pulse.ipynb`](figures/fig4_PSblocked_paired_pulse.ipynb) | Paired-pulse (AP1/AP2) traces: Control vs presenilin(PS)-blocked |
 | 5 | [`figures/fig5_RyR_paired_pulse_facilitation.ipynb`](figures/fig5_RyR_paired_pulse_facilitation.ipynb) | RyR-dependent paired-pulse facilitation across conditions |
 | 6 | [`figures/fig6_RyR_train.ipynb`](figures/fig6_RyR_train.ipynb) | RyR flux and ER depletion across a 20-pulse, 20 Hz train |
@@ -30,7 +30,7 @@ details. This file is the map between them and the paper.
 | 8 | [`figures/fig8_poirazi_synapse_validation.ipynb`](figures/fig8_poirazi_synapse_validation.ipynb) | Postsynaptic CA1 synapse calibration against Smith, Ellis-Davies & Magee (2003) |
 | 9 | [`figures/fig9_postsynaptic_train_EPSC.ipynb`](figures/fig9_postsynaptic_train_EPSC.ipynb) | Postsynaptic somatic EPSC across the train, 4 conditions |
 | 10 | [`figures/fig10_sustained_unreliability.ipynb`](figures/fig10_sustained_unreliability.ipynb) | AD synapse reliability breakdown under sustained stimulation |
-| S1 | [`figures/figS1_model_fits_timescales.ipynb`](figures/figS1_model_fits_timescales.ipynb) | Kinetics/timescale model fits underlying Figure 3's rise/decay numbers |
+| S1 | [`figures/figS1_single_AP.ipynb`](figures/figS1_single_AP.ipynb) | Single-AP presynaptic dynamics (traces underlying Figure 3's timescale fits): VDCC/RyR flux, cytosolic/AZ/ER calcium, calbindin/SERCA buffering, PMCA extrusion, vesicle release timing |
 | S2 | [`figures/figS2_ER_steadystate.ipynb`](figures/figS2_ER_steadystate.ipynb) | Confirms resting ER calcium is at steady state pre-stimulus |
 | S3 | [`figures/figS3_RyR_train_0_8_serca.ipynb`](figures/figS3_RyR_train_0_8_serca.ipynb) | RyR dosage (3x vs 1/3x) effects on peak ER calcium, net RyR flux, and facilitation across a 20-pulse, 20 Hz train |
 | S4 | [`figures/figS4_ER_hyperactivity_RyRunder250.ipynb`](figures/figS4_ER_hyperactivity_RyRunder250.ipynb) | RyR under-expression without ER calcium overload |
@@ -62,7 +62,7 @@ conda activate ad-presynaptic-calcium-model
    from `results/` directories produced by steps 1-2, which are **not included in this repo**
    (large, per-condition/per-seed simulation output) -- each notebook's own `CONFIG` cell states
    the exact paths it expects. `figures/paired_pulse_summary/` and the two
-   `figS1_model_fits_timescales_*` files are small, pre-aggregated exceptions that **are**
+   `fig3_model_fits_timescales_*` files are small, pre-aggregated exceptions that **are**
    included, since they're already small enough to version directly.
 
 ## Data availability
