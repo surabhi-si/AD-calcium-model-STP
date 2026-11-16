@@ -1,0 +1,41 @@
+category,signal,metric,value_ms,err_ms
+Channel flux,VDCC,time to peak,1.3100000000000005,
+Channel flux,VDCC,"rise time (10-90%, model-free)",0.6075877159403016,
+Channel flux,VDCC,"rise tau (sigmoid fit, true onset)",0.14448529166553592,0.007884472833957283
+Channel flux,VDCC,"decay tau (1/e, model-free, clean window)",0.37379339204281387,
+Channel flux,VDCC,"decay tau (exp fit, adaptive window)",0.09707724257886206,0.003531445105686669
+Channel flux,RyR,time to peak,1.810000000000001,
+Channel flux,RyR,"rise time (10-90%, model-free)",0.5034175819110392,
+Channel flux,RyR,"rise tau (sigmoid fit, true onset)",0.11266319167527276,0.004464150443906316
+Channel flux,RyR,"decay tau (1/e, model-free)",0.7722189339373752,
+Channel flux,RyR,"decay tau (fast, exp fit, adaptive window)",0.5489878200874274,0.011516249066670209
+Channel flux,RyR,"decay tau (slow, exp fit, adaptive window)",14.957727496935753,0.5470668820207759
+Ca2+ pool,AZ (nanodomain),time to peak,1.5600000000000007,
+Ca2+ pool,AZ (nanodomain),rise tau (sigmoid fit),0.12901293331876007,0.0018650393540417386
+Ca2+ pool,AZ (nanodomain),"decay tau (1/e, model-free)",0.4996149365857159,
+Ca2+ pool,AZ (nanodomain),"decay tau (fast, exp fit, adaptive window)",0.3611161572899599,0.00945383196123952
+Ca2+ pool,AZ (nanodomain),"decay tau (slow, exp fit, adaptive window)",7.315115936683609,0.17412812075677203
+Ca2+ pool,Cytosol (bulk),time to peak,1.5700000000000003,
+Ca2+ pool,Cytosol (bulk),rise tau (sigmoid fit),0.14741293730264132,0.0005946998433929412
+Ca2+ pool,Cytosol (bulk),"decay tau (1/e, model-free)",0.479577506933955,
+Ca2+ pool,Cytosol (bulk),"decay tau (fast, exp fit, adaptive window)",0.3403095058763612,0.0007492229463670825
+Ca2+ pool,Cytosol (bulk),"decay tau (slow, exp fit, adaptive window)",9.776205040572773,0.057673245005251485
+Ca2+ pool,ER (depletion),onset delay,1.6100000000000003,
+Ca2+ pool,ER (depletion),depletion tau (single exp fit),15.462296401565723,0.3507184277564689
+Ca2+ pool,ER (depletion),"depletion tau (fast, biexp fit)",0.694398142587542,0.004947723247777859
+Ca2+ pool,ER (depletion),"depletion tau (slow, biexp fit)",24.52281940401393,0.11486851537738506
+Buffer/extrusion,Calbindin,onset delay,0.9999999999999991,
+Buffer/extrusion,Calbindin,"binding rise tau (fast, biexp fit, from onset)",0.5801260101537831,0.0027002229240706143
+Buffer/extrusion,Calbindin,"binding rise tau (slow, biexp fit, from onset)",12.083425161779408,0.1540872533912042
+Buffer/extrusion,SERCA,time to peak,2.5400000000000005,
+Buffer/extrusion,SERCA,onset delay,0.5699999999999993,
+Buffer/extrusion,SERCA,"binding rise tau (sigmoid fit, from onset to peak)",0.27811212403648095,0.0011321176807476338
+Buffer/extrusion,PMCA,onset tau (combined onset+linear fit),1.2208420480247055,0.014449652192437669
+Buffer/extrusion,PMCA,steady-state rate (units/ms),0.3843525120655257,
+Vesicle release,Synchronous,mean latency,7.237484126984125,
+Vesicle release,Synchronous,t50 (median latency),5.4750000000000005,
+Vesicle release,Synchronous,onset delay (delayed trunc-exp MLE),1.7029999999999976,
+Vesicle release,Synchronous,release tau (delayed trunc-exp MLE),5.578617120454676,
+Vesicle release,Asynchronous,mean latency,23.12511111111111,
+Vesicle release,Asynchronous,t50 (median latency),24.784999999999997,
+Vesicle release,Asynchronous,onset delay (delayed-uniform MLE),2.9770000000000003,

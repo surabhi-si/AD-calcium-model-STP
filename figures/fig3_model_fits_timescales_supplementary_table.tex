@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\caption{Fitting functions and parameters underlying the timescales cited in the Results section. Rise/decay $\tau$ in ms; ``/'' separates fast/slow components of a bi-exponential fit. Amplitude/baseline parameters ($A$, $C$) are in each signal's native units (ions/ms for flux, $\mu$M for Ca\textsuperscript{2+} concentration, $\times100$ ions for buffered/extruded counts), matching the main figure.}
+\label{tab:timescale_fits}
+\small
+\begin{tabular}{p{2.6cm} p{4.2cm} p{4.6cm} p{1.6cm} p{2.0cm}}
+\hline
+\textbf{Component} & \textbf{Fitting function} & \textbf{Fitted parameters} & \textbf{Rise $\tau$ (ms)} & \textbf{Decay $\tau$ (ms)} \\
+\hline
+VDCC flux (rise) & Sigmoid: $C + A/(1+e^{-(t-t_{1/2})/\tau})$ & $A=9.77\times10^{6}$, $C\approx 1.33\times10^{-8}$ (ions/ms) & 0.144 & -- \\
+VDCC flux (decay) & Single exponential: $A\,e^{-t/\tau} + C$ & $A=2.82\times10^{6}$, $C=-214$ (ions/ms) & -- & 0.097 \\
+RyR flux (rise) & Sigmoid: $C + A/(1+e^{-(t-t_{1/2})/\tau})$ & $A=2.76\times10^{5}$, $C\approx 8.84\times10^{-7}$ (ions/ms) & 0.113 & -- \\
+RyR flux (decay) & Bi-exponential: $A_1 e^{-t/\tau_1} + A_2 e^{-t/\tau_2} + C$ & $A_1=2.23\times10^{5}$, $A_2=1.74\times10^{4}$, $C=3539$ (ions/ms) & -- & 0.549 / 14.96 \\
+AZ Ca\textsuperscript{2+} (rise) & Sigmoid: $C + A/(1+e^{-(t-t_{1/2})/\tau})$ & $A=8.71$, $C=0.108$ ($\mu$M) & 0.129 & -- \\
+Cytosol Ca\textsuperscript{2+} (rise) & Sigmoid: $C + A/(1+e^{-(t-t_{1/2})/\tau})$ & $A=3.44$, $C=0.100$ ($\mu$M) & 0.147 & -- \\
+ER Ca\textsuperscript{2+} (depletion) & Bi-exponential depletion: $C - A_1(1-e^{-t/\tau_1}) - A_2(1-e^{-t/\tau_2})$ & $A_1=7.85$, $A_2=13.9$, $C=251$ ($\mu$M) & -- & 0.694 / 24.52 \\
+Calbindin (rise) & Bi-exponential rise: $C + A_1(1-e^{-t/\tau_1}) + A_2(1-e^{-t/\tau_2})$ & $A_1=18.9$, $A_2=5.42$, $C=122$ ($\times100$ ions) & 0.580 / 12.08 & -- \\
+SERCA (rise) & Sigmoid: $C + A/(1+e^{-(t-t_{1/2})/\tau})$ & $A=19.2$, $C=67.6$ ($\times100$ ions) & 0.278 & -- \\
+PMCA (extrusion) & Onset + linear: $A(1-e^{-t/\tau}) + \mathrm{rate}\cdot t + C$ & $A=3.06$, rate$=38.4$ ions/ms, $C=2.89$ ($\times100$ ions) & 1.221 (onset) & -- \\
+Synchronous release & Delayed truncated-exponential (MLE) & delay $d=1.70$ ms & -- & 5.58 \\
+Asynchronous release & Delayed uniform (MLE) & delay $d=2.98$ ms & -- & no resolvable decay \\
+\hline
+\end{tabular}
+\end{table}
